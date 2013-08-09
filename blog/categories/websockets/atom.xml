@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Adventures in code land]]></title>
-  <link href="http://dominicphillips.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: websockets | Adventures in code land]]></title>
+  <link href="http://dominicphillips.github.io/blog/categories/websockets/atom.xml" rel="self"/>
   <link href="http://dominicphillips.github.io/"/>
   <updated>2013-08-09T22:24:42+02:00</updated>
   <id>http://dominicphillips.github.io/</id>
