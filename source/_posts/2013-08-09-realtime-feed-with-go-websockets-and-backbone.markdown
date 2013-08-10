@@ -3,7 +3,7 @@ layout: post
 title: "Realtime feed with Go websockets and backbone"
 date: 2013-08-09 22:03
 comments: true
-categories: go, backbone, websockets
+categories: go backbone websockets
 ---
 
 Something, something. WIP.
