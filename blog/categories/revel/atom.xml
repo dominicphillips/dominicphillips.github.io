@@ -4,7 +4,7 @@
   <title><![CDATA[Category: revel | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/revel/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2013-08-11T20:00:08+02:00</updated>
+  <updated>2013-08-11T20:02:17+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -30,7 +30,7 @@
 
 <h3>Getting Started</h3>
 
-<p>First things first. We are running Go 1.1.1, the revel framework is installed to our $GOPATH and we&rsquo;re able to call the revel command line tool from our shell. If that sounds like crazy talk to you can read up about installing Go, the $GOPATH/BIN environment variables and installing revel here:</p>
+<p>First things first. We are running Go 1.1.1, the revel framework is installed to our $GOPATH and we&rsquo;re able to call the revel command line tool from our shell. If that sounds like crazy talk to you, read up about installing Go, the $GOPATH/BIN environment variables and installing revel, here:</p>
 
 <ul>
 <li><a href="http://golang.org/doc/install">Getting started with Go</a></li>
