@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://dominicphillips.github.io/sitemap.xml 
+Sitemap: http://dominicphillips.de/sitemap.xml 

@@ -2,32 +2,32 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
-            http://dominicphillips.github.io/blog/2013/08/09/realtime-feed-with-go-websockets-and-backbone/
+            http://dominicphillips.de/blog/2013/08/09/realtime-feed-with-go-websockets-and-backbone/
         </loc>
-        <lastmod>2013-08-10T12:47:39+02:00</lastmod>
+        <lastmod>2013-08-11T18:29:35+02:00</lastmod>
     </url>
     <url>
-        <loc>http://dominicphillips.github.io/about/</loc>
+        <loc>http://dominicphillips.de/about/</loc>
         <lastmod>2013-08-10T12:49:37+02:00</lastmod>
     </url>
     <url>
-        <loc>http://dominicphillips.github.io/archives/</loc>
-        <lastmod>2013-08-10T12:47:39+02:00</lastmod>
+        <loc>http://dominicphillips.de/archives/</loc>
+        <lastmod>2013-08-11T18:29:35+02:00</lastmod>
     </url>
     <url>
-        <loc>http://dominicphillips.github.io/blog/archives/</loc>
-        <lastmod>2013-08-10T12:47:39+02:00</lastmod>
+        <loc>http://dominicphillips.de/blog/archives/</loc>
+        <lastmod>2013-08-11T18:29:35+02:00</lastmod>
     </url>
     <url>
-        <loc>http://dominicphillips.github.io/blog/</loc>
-        <lastmod>2013-08-10T12:47:39+02:00</lastmod>
+        <loc>http://dominicphillips.de/blog/</loc>
+        <lastmod>2013-08-11T18:29:35+02:00</lastmod>
     </url>
     <url>
-        <loc>http://dominicphillips.github.io/</loc>
-        <lastmod>2013-08-10T12:47:39+02:00</lastmod>
+        <loc>http://dominicphillips.de/</loc>
+        <lastmod>2013-08-11T18:29:35+02:00</lastmod>
     </url>
     <url>
-        <loc>http://dominicphillips.github.io/robots.txt</loc>
+        <loc>http://dominicphillips.de/robots.txt</loc>
         <lastmod>2013-08-09T22:14:38+02:00</lastmod>
     </url>
 </urlset>

@@ -1,0 +1,32 @@
+body {
+	background:#3498DB;
+	font-family: 'Open Sans';
+}
+
+.center {
+	color:#fff;
+	background: #2980B9;
+	width: 50%;
+	height: 50%;
+	overflow: auto;
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+
+}
+
+.container {
+	width:960px;
+	margin:0 auto;
+}
+
+input.status {
+	padding: 5px;
+
+}
+
+#settings {
+	padding:15px;
+}
+
+
