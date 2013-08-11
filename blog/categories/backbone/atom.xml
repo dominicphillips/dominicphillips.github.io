@@ -4,7 +4,7 @@
   <title><![CDATA[Category: backbone | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/backbone/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2013-08-11T18:31:13+02:00</updated>
+  <updated>2013-08-11T18:43:17+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -22,7 +22,7 @@
 
 <p>In this series of blog posts we are going to build a web socket based real time feed, using the amazing revel framework, backbone, and HTML5 websockets.</p>
 
-<p>Revel is a &ldquo;high-productivity web framework&rdquo;, written in the Go language that shows promising results in benchmarks and is also a joy to work with. It sports a huge collection of features such as sessions, hot code reload, job running and a <a href="http://robfig.github.io/revel/manual/index.html">bunch of other shenanigans</a>. Bascially all the stuff you don&rsquo;t want to write on your own every time.</p>
+<p>Revel is a &ldquo;high-productivity web framework&rdquo; written in the Go language that shows promising results in benchmarks and is also a joy to work with. It sports a huge collection of features such as sessions, hot code reload, job running and a <a href="http://robfig.github.io/revel/manual/index.html">bunch of other shenanigans</a>. Bascially all the stuff you don&rsquo;t want to write on your own every time.</p>
 
 <p>Websockets are a way of bi-directional communication between client and server and are supported by all newer browsers. You can read the spec <a href="http://tools.ietf.org/html/rfc6455">here</a>.</p>
 
