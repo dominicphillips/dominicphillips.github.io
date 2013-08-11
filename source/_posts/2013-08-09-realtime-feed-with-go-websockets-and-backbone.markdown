@@ -10,7 +10,7 @@ This is part one of the real time feed series, <del>check out parts [2](http://)
 
 In this series of blog posts we are going to build a web socket based real time feed, using the amazing revel framework, backbone, and HTML5 websockets.
 
-Revel is a "high-productivity web framework", written in the Go language that shows promising results in benchmarks and is also a joy to work with. It sports a huge collection of features such as sessions, hot code reload, job running and a [bunch of other shenanigans](http://robfig.github.io/revel/manual/index.html). Bascially all the stuff you don't want to write on your own every time.
+Revel is a "high-productivity web framework" written in the Go language that shows promising results in benchmarks and is also a joy to work with. It sports a huge collection of features such as sessions, hot code reload, job running and a [bunch of other shenanigans](http://robfig.github.io/revel/manual/index.html). Bascially all the stuff you don't want to write on your own every time.
 
 Websockets are a way of bi-directional communication between client and server and are supported by all newer browsers. You can read the spec [here](http://tools.ietf.org/html/rfc6455).
 
