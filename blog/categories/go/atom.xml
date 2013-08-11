@@ -4,7 +4,7 @@
   <title><![CDATA[Category: go | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/go/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2013-08-11T18:43:17+02:00</updated>
+  <updated>2013-08-11T19:05:30+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -28,7 +28,7 @@
 
 <h3>Getting Started</h3>
 
-<p>First things first. We are running Go 1.1.1, the revel framework is installed to our $GOPATH and we&rsquo;re able to call the revel command line tool from your shell. If that sounds like crazy talk to you can read up about installing Go, the $GOPATH/BIN environment variables and installing revel here:</p>
+<p>First things first. We are running Go 1.1.1, the revel framework is installed to our $GOPATH and we&rsquo;re able to call the revel command line tool from our shell. If that sounds like crazy talk to you can read up about installing Go, the $GOPATH/BIN environment variables and installing revel here:</p>
 
 <ul>
 <li><a href="http://golang.org/doc/install">Getting started with Go</a></li>
@@ -149,7 +149,10 @@ index: function() {
 
 <p>```</p>
 
-<p>In the next post we&rsquo;re going to open a web socket connection and wire it all up with the Feed controller. Thanks for reading, stay tuned.</p>
+<h3>Wrapping it up</h3>
+
+<p>So far we&rsquo;ve laid out the foundation with some boilerplate code, added a &ldquo;catch-all&rdquo; route that proxies most requests to our frontend app and added some frontend libraries. Pretty basic stuff.
+In the next post we&rsquo;re going to open a web socket connection and wire it all up with the Feed controller. Thanks for reading, stay tuned.</p>
 ]]></content>
   </entry>
   
