@@ -4,7 +4,7 @@
   <title><![CDATA[Category: revel | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/revel/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2013-08-11T20:02:17+02:00</updated>
+  <updated>2013-08-11T22:39:21+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -22,7 +22,7 @@
 
 <p>In this series of blog posts we are going to build a web socket based real time feed, using the amazing revel framework, backbone and HTML5 websockets.</p>
 
-<p>Revel is a &ldquo;high-productivity web framework&rdquo; written in the Go language that shows promising results in benchmarks and is also a joy to work with. It sports a huge collection of features such as sessions, hot code reload, job running and a <a href="http://robfig.github.io/revel/manual/index.html">bunch of other shenanigans</a>. Bascially all the stuff you don&rsquo;t want to write on your own every time.</p>
+<p>Revel is a &ldquo;high-productivity web framework&rdquo; written in the Go programming language that shows promising results in benchmarks and is also a joy to work with. It sports a huge collection of features such as sessions, hot code reload, job running and a <a href="http://robfig.github.io/revel/manual/index.html">bunch of other shenanigans</a>. Bascially all the stuff you don&rsquo;t want to write on your own every time.</p>
 
 <p>Websockets are a way of bi-directional communication between client and server and are supported by all newer browsers. You can read the spec <a href="http://tools.ietf.org/html/rfc6455">here</a>.</p>
 
@@ -30,7 +30,7 @@
 
 <h3>Getting Started</h3>
 
-<p>First things first. We are running Go 1.1.1, the revel framework is installed to our $GOPATH and we&rsquo;re able to call the revel command line tool from our shell. If that sounds like crazy talk to you, read up about installing Go, the $GOPATH/BIN environment variables and installing revel, here:</p>
+<p>First things first. We are running Go 1.1.1, the revel framework is installed to our $GOPATH and we are able to call the revel command line tool from our shell. If that sounds like crazy talk to you, read up about installing Go, the $GOPATH/BIN environment variables and installing revel, here:</p>
 
 <ul>
 <li><a href="http://golang.org/doc/install">Getting started with Go</a></li>
@@ -38,13 +38,13 @@
 </ul>
 
 
-<p>We start off by creating a new revel project. The first command will install a skeletton app into our $GOPATH/src. After that we may run the application. Revel will put a harness around our app that will rebuild and reload the app every time it detects a code change. This allows us to see changes immediately, which is super neat. Our app listens on :9000 per default, upon navigating to localhost:9000 we&rsquo;re greeted with a friendly &ldquo;It works!&rdquo;. So far so good.
+<p>We start off by creating a new revel project. The first command will install a skeletton app into our $GOPATH/src. After that we may run the application. Revel will put a harness around our app that will rebuild and reload the app every time it detects a code change. This allows us to see changes immediately, which is super neat. It listens on :9000 per default, upon navigating to localhost:9000 we are greeted with a friendly &ldquo;It works!&rdquo;. So far so good.
 <code>
 $ revel new feed
 $ revel run feed
 </code></p>
 
-<p>After that we fire up our favorite editor and get to work. As we&rsquo;re building a single page application, our backbone router will do most of the routing. By adding a new &ldquo;catch-all&rdquo; route to our conf/routes file we ensure that every request that is not beeing catched by previous routes, gets handed off to our Index route. We&rsquo;re also adding a route that accepts a Websocket connection at /feed/connect which will be handled by the Feed controller (later).</p>
+<p>After that we fire up our favorite editor and get to work. As we are building a single page application, our backbone router will do most of the routing. By adding a new &ldquo;catch-all&rdquo; route to our conf/routes file we ensure that every request that is not beeing catched by previous routes, gets handed off to our Index route. we are also adding a route that accepts a Websocket connection at /feed/connect which will be handled by the Feed controller (later).</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Adding a wildcard to our routes (routes)</span> <a href='/downloads/code/feed/conf/routes'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -83,7 +83,7 @@ $ revel run feed
 </span><span class='line'><span class="n">GET</span>     <span class="o">/*</span>                                      <span class="n">App</span><span class="p">.</span><span class="n">Index</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Revel has a built in static file server that will serve from /public. We add a vendor folder to the public folder and download our frontend dependencies and include them in our footer template. We are also going to add a template that holds our underscore templates.</p>
+<p>Revel has a built in static file server that will serve from /public. We add a vendor folder to public, download our frontend dependencies and include them in our footer template. We are also going to add a template that holds our underscore templates.</p>
 
 <ul>
 <li><a href="http://jquery.com">jQuery</a></li>
@@ -115,7 +115,7 @@ $ revel run feed
 
 <h3>Wiring up the frontend</h3>
 
-<p>We continue in app.js. with some boilerplate code. We&rsquo;re good citizen and namespace our app under the FEED object, so we don&rsquo;t pollute the global namespace. We add a start method that we use to bootstrap our router and views and wrap it inside jQuery&rsquo;s document ready function. We&rsquo;ve also added a global event bus <i>vent</i>, that we can later publish events to.</p>
+<p>We continue in app.js. with some boilerplate code. We are good citizen and namespace our app under the FEED object, so we don&rsquo;t pollute the global namespace. We add a start method that we use to bootstrap our router and views and wrap it inside jQuery&rsquo;s document ready function. We have also added a global event bus <i>vent</i>, that we can later publish events to.</p>
 
 <p>``` javascript Bootstraping our frontend</p>
 
@@ -153,8 +153,8 @@ index: function() {
 
 <h3>Wrapping it up</h3>
 
-<p>So far we&rsquo;ve laid out the foundation with some boilerplate code, added a &ldquo;catch-all&rdquo; route that proxies most requests to our frontend app and added some frontend libraries. Pretty basic stuff.
-In the next post we&rsquo;re going to open a web socket connection and wire it all up with the Feed controller. Thanks for reading, stay tuned.</p>
+<p>So far we have laid out the foundation with some boilerplate code, added a &ldquo;catch-all&rdquo; route that proxies most requests to our backbone router and added some frontend libraries. Pretty basic stuff, really.
+In the next post we are going to open a web socket connection and wire it all up with a brand new Feed controller. Thanks for reading, stay tuned.</p>
 ]]></content>
   </entry>
   
