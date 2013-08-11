@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://dominicphillips.github.io
+url: http://dominicphillips.de
 title: Adventures in code land
 subtitle: hacking, startups, stuff.
 author: Dominic Phillips
 simple_search: http://google.com/search
-description:
+description: Software Engineer Munich Germany
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
