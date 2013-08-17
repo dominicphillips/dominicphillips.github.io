@@ -4,7 +4,7 @@
   <title><![CDATA[Category: revel | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/revel/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2013-08-17T02:20:47+02:00</updated>
+  <updated>2013-08-17T13:52:00+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -61,7 +61,7 @@ if ($query_string) {
 <p>}
 ```</p>
 
-<p>Adding query strings to static files is kinda <a href="(http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">frowned</a> <a href="http://www.paulirish.com/2010/announcing-html5-boilerplate/#comment-34976">upon</a>, mostly due to not beeing cacheable by some proxies.</p>
+<p>Adding query strings to static files is kinda <a href="(http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">frowned</a> <a href="http://www.paulirish.com/2010/announcing-html5-boilerplate/#comment-34976">upon</a>, mostly due to not beeing cacheable by some proxies. I&rsquo;m planning to extend this module so it saves to disc with the hash in the filename.</p>
 ]]></content>
   </entry>
   
