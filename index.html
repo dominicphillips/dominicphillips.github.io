@@ -108,6 +108,92 @@ $(document).ready(
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/blog/2013/08/17/revel-static-files-and-cache-busting/">
+		
+			Revel Static Files and Cache Busting</a>
+	</h2>
+	<div class="entry-content">
+		<p>I needed a way to bust caches for static files in my revel applications, so I wrote this little template function that adds the md5 hashed file content as a query string to the filename. Check it out <a href="https://github.com/dominicphillips/revel-staticfiles">here</a>.</p>
+
+<p>To use it in your project, &ldquo;go get&rdquo; it from github</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ go get github.com/dominicphillips/revel-staticfiles</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add it to your app.conf</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>* snip *
+</span><span class='line'>module.static=github.com/robfig/revel/modules/static
+</span><span class='line'>module.staticfiles=github.com/dominicphillips/revel-staticfiles</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And finally, use the template tag</p>
+
+<figure class='code'><figcaption><span>Add template tag</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ static &quot;</span><span class="na">css</span><span class="err">/</span><span class="na">main</span><span class="err">.</span><span class="na">css</span><span class="err">&quot;</span> <span class="err">}}&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ static &quot;</span><span class="na">js</span><span class="err">/</span><span class="na">app</span><span class="err">.</span><span class="na">js</span><span class="err">&quot;}}&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The md5 will be cached for the default caching duration of your app, remember to change cache.expires in accordingly.</p>
+
+<p>If you&rsquo;re using nginx as a frontend proxy, set expires max.</p>
+
+<figure class='code'><figcaption><span>Add template tag</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>location /public/ {
+</span><span class='line'>    alias /path/to/app/public/;
+</span><span class='line'>    if ($query_string) {
+</span><span class='line'>        expires max;
+</span><span class='line'>    }
+</span><span class='line'>}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Adding query strings to static files is kinda frowned upon<a href="http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">0</a><a href="http://www.paulirish.com/2010/announcing-html5-boilerplate/#comment-34976">1</a>, mostly due to not beeing cached by some proxies, but the amount of traffic you get from proxies should be pretty low.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-17T01:41:00+02:00" pubdate data-updated="true">Aug 17<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/go/'>go</a>, <a class='category' href='/blog/categories/revel/'>revel</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/blog/2013/08/09/realtime-feed-with-go-websockets-and-backbone/">
 		
 			Building a Realtime Feed</a>

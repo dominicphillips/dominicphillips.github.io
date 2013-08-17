@@ -4,7 +4,7 @@
   <title><![CDATA[Category: revel | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/revel/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2013-08-16T17:56:53+02:00</updated>
+  <updated>2013-08-17T02:16:49+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Revel static files and cache busting]]></title>
+    <link href="http://dominicphillips.de/blog/2013/08/17/revel-static-files-and-cache-busting/"/>
+    <updated>2013-08-17T01:41:00+02:00</updated>
+    <id>http://dominicphillips.de/blog/2013/08/17/revel-static-files-and-cache-busting</id>
+    <content type="html"><![CDATA[<p>I needed a way to bust caches for static files in my revel applications, so I wrote this little template function that adds the md5 hashed file content as a query string to the filename. Check it out <a href="https://github.com/dominicphillips/revel-staticfiles">here</a>.</p>
+
+<p>To use it in your project, &ldquo;go get&rdquo; it from github</p>
+
+<p><code>
+$ go get github.com/dominicphillips/revel-staticfiles
+</code></p>
+
+<p>Add it to your app.conf</p>
+
+<p><code>
+* snip *
+module.static=github.com/robfig/revel/modules/static
+module.staticfiles=github.com/dominicphillips/revel-staticfiles
+</code></p>
+
+<p>And finally, use the template tag
+
+``` html Add template tag
+<link rel="stylesheet" type="text/css" href="{{ static "css/main.css" }}"></p>
+
+<script src="{{ static "js/app.js"}}"></script>
+
+
+<p>```
+</p>
+
+<p>The md5 will be cached for the default caching duration of your app, remember to change cache.expires in accordingly.</p>
+
+<p>If you&rsquo;re using nginx as a frontend proxy, set expires max.</p>
+
+<p>```
+location /public/ {</p>
+
+<pre><code>alias /path/to/app/public/;
+if ($query_string) {
+    expires max;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Adding query strings to static files is kinda frowned upon<a href="http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">0</a><a href="http://www.paulirish.com/2010/announcing-html5-boilerplate/#comment-34976">1</a>, mostly due to not beeing cached by some proxies, but the amount of traffic you get from proxies should be pretty low.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Building a realtime feed]]></title>
