@@ -108,6 +108,81 @@ $(document).ready(
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/blog/2013/09/19/proxy-all-clicks-through-router-in-backbone-app/">
+		
+			Proxy All Links Through Router in Backbone App</a>
+	</h2>
+	<div class="entry-content">
+		<p>While working on some single page prototypes I was in the situation where I wanted to quickly proxy all internal links through a single backbone router. The easiest solution I found was to wrap the whole application in an AppView, catch all link clicks and pass them to the router. In case there where outgoing links, add a &ldquo;pass&rdquo; class. Some example code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="k">class</span> <span class="nx">MyApp</span><span class="p">.</span><span class="nx">Views</span><span class="p">.</span><span class="nx">AppView</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span>
+</span><span class='line'>  <span class="nv">el : </span><span class="s">&#39;#app&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">events:</span>
+</span><span class='line'>    <span class="s">&#39;click a&#39;</span> <span class="o">:</span> <span class="s">&#39;proxyLinks&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">proxyLinks : </span><span class="nf">(e) -&gt;</span>
+</span><span class='line'>    <span class="nv">$t = </span><span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">$t</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s">&#39;pass&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">return</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+</span><span class='line'>    <span class="nv">href = </span><span class="nx">$t</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s">&#39;href&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">MyApp</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="nx">href</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You&rsquo;ll only want to initialize this view once. If you have more than one router you could add the routers name as a data attribute to the link or distinguish by prefixes.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-19T11:41:00+02:00" pubdate data-updated="true">Sep 19<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/backbone/'>backbone</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/blog/2013/08/17/revel-static-files-and-cache-busting/">
 		
 			Revel Static Files and Cache Busting</a>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: javascript | Adventures in code land]]></title>
+  <link href="http://dominicphillips.de/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://dominicphillips.de/"/>
+  <updated>2013-09-19T12:14:30+02:00</updated>
+  <id>http://dominicphillips.de/</id>
+  <author>
+    <name><![CDATA[Dominic Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Proxy all links through router in backbone app]]></title>
+    <link href="http://dominicphillips.de/blog/2013/09/19/proxy-all-clicks-through-router-in-backbone-app/"/>
+    <updated>2013-09-19T11:41:00+02:00</updated>
+    <id>http://dominicphillips.de/blog/2013/09/19/proxy-all-clicks-through-router-in-backbone-app</id>
+    <content type="html"><![CDATA[<p>While working on some single page prototypes I was in the situation where I wanted to quickly proxy all internal links through a single backbone router. The easiest solution I found was to wrap the whole application in an AppView, catch all link clicks and pass them to the router. In case there where outgoing links, add a &ldquo;pass&rdquo; class. Some example code:</p>
+
+<p>``` coffeescript
+class MyApp.Views.AppView extends Backbone.View
+  el : &lsquo;#app&rsquo;</p>
+
+<p>  events:</p>
+
+<pre><code>'click a' : 'proxyLinks'
+</code></pre>
+
+<p>  proxyLinks : (e) &ndash;></p>
+
+<pre><code>$t = $(e.currentTarget)
+
+if $t.hasClass('pass')
+  return
+
+e.preventDefault()
+href = $t.attr('href')
+MyApp.router.navigate(href, true)
+</code></pre>
+
+<p>```</p>
+
+<p>You&rsquo;ll only want to initialize this view once. If you have more than one router you could add the routers name as a data attribute to the link or distinguish by prefixes.</p>
+]]></content>
+  </entry>
+  
+</feed>
