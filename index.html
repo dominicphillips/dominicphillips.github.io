@@ -131,15 +131,18 @@ $(document).ready(
 </div>
 
 
-<p>Our widget is pretty simple but requires a lot of markup and styling, thats why I decided to inject it into the publishers site via an simple iframe, instead of fiddling with the DOM directly. This ensures that my JS and CSS is scoped to my iframe and I won&rsquo;t mess up the publishers site by accident. Another added benefit is that we also avoid the same origin restrictions this way. Not every Look has the same height, thats why we need a method to communicate with the publishers site to set the iframes height accordingly. There is <a href="https://developer.mozilla.org/en-US/docs/Web/API/window.postMessage">window.postMessage</a> but unfortunately it&rsquo;s not avaiable to all browsers.</p>
+<p>Our widget is pretty simple but requires a lot of markup and styling, thats why I decided to inject it into the publishers site via an simple iframe, instead of fiddling with the DOM directly. This ensures that my JS and CSS is scoped to my iframe and I won&rsquo;t mess up the publishers site by accident. Another added benefit is that we also avoid the same origin restrictions this way.</p>
+
+<p>&ldquo;Looks&rdquo; have variable heights so we need a way to communicate with the publishers &ldquo;document&rdquo; from within our iframe, to set its height accordingly. There is <a href="https://developer.mozilla.org/en-US/docs/Web/API/window.postMessage">window.postMessage</a> but unfortunately it&rsquo;s not avaiable to all browsers.</p>
 
 <div class="info">
   The window.postMessage method safely enables cross-origin communication. Normally, scripts on different pages are allowed to access each other if and only if the pages that executed them are at locations with the same protocol (usually both http), port number (80 being the default for http), and host (modulo document.domain being set by both pages to the same value). window.postMessage provides a controlled mechanism to circumvent this restriction in a way which is secure when properly used.
 </div>
 
 
-<p>I found <a href="http://easyxdm.net/">easyXDM</a> to be the perfect library to handle this problem. It uses postMessage and falls back to other methods like flash or FrameElementTransport.
-Some pseudeo code to showcase how it is used: First we set up a socket on the hosts site. Notice how the onMessage function uses the incoming &lsquo;message&rsquo; to change the iframes height. EasyXDM will inject an iframe into the specified container using the remote property as its src. Pretty neat.</p>
+<p>I found <a href="http://easyxdm.net/">easyXDM</a> to be the perfect library to handle this problem. It uses postMessage and falls back to other methods like flash or FrameElementTransport, its a great little library which is also used by the &ldquo;big boys&rdquo;.</p>
+
+<p>Next follows some pseudo code: First we set up a socket on the hosts site. Notice how the onMessage function uses the incoming &lsquo;message&rsquo; to change the iframes height. EasyXDM will inject an iframe into the specified container using the remote property as its src, which is really neat.</p>
 
 <figure class='code'><figcaption><span>Host</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
