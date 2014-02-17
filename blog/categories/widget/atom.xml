@@ -4,7 +4,7 @@
   <title><![CDATA[Category: widget | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/widget/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2014-02-13T17:56:55+01:00</updated>
+  <updated>2014-02-17T13:46:42+01:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -18,11 +18,11 @@
     <link href="http://dominicphillips.de/blog/2014/02/02/writing-third-party-widgets/"/>
     <updated>2014-02-02T13:13:00+01:00</updated>
     <id>http://dominicphillips.de/blog/2014/02/02/writing-third-party-widgets</id>
-    <content type="html"><![CDATA[<p>In this post I want to share some of the experience I picked up from building the STYLIGHT looks widget and third party javascript in general. Our widget allows users to embed looks (think of a collection of images, products and videos) into their own websites. Third party js is hard and there are lots of very annoying restrictions, bugs, caveats security concerns etc.</p>
+    <content type="html"><![CDATA[<p>In this post I want to share some of the experience I picked up from building the <a href="http://www.stylight.co.uk">STYLIGHT</a> looks widget and third party javascript in general. Our widget allows users to embed looks (think of a collection of images, products and videos) into their own websites. Third party js is hard and there are lots of very annoying restrictions, bugs, and security concerns, after all you don&rsquo;t want to break peoples sites.</p>
 
-<p>They&rsquo;re also are all over the web and I expected to easily find best practices, ressource and blog posts on how to actually build quality, scalable widgets. But quite the contrary, the only real helpful information I found was from a book by developers from disqus. I&rsquo;d definetely check it out if you&rsquo;re looking into writing third party js. <a href="http://thirdpartyjs.com/">Get it here</a>.</p>
+<p>Third party widgets are all over the web, e.g. google analytics, disqus, all social share buttons and I expected to easily find best practices, ressource and blog posts on how to actually build quality, scalable widgets. But, quite the contrary, the only real helpful information I found was from a book by developers from disqus. I&rsquo;d definetely check it out if you&rsquo;re looking into writing third party js. <a href="http://thirdpartyjs.com/">Get it here</a>.</p>
 
-<p>This is how the widget currently looks like:</p>
+<p>This is how our widget currently looks like:</p>
 
 <center>
 <a href="http://www.stylight.de/kayture/Looks/Blue-in-shanghai/" class="stylight-look" data-width="640"></a>
@@ -75,7 +75,7 @@ Some pseudeo code to showcase how it is used: First we set up a socket on the ho
 <p>```</p>
 
 <p>Rendering, analytics calls and added functionality all happen in our own &lsquo;domain&rsquo;, we just briefly touch the publishers DOM.
-How do we make the widget configurable? One way is to ask the user to add an html element to her site which containns all options as data attributes, which we can then use as query / hash params for our iframe src. We may also use this element as our iframes container, WIN/WIN.</p>
+How do we make the widget configurable? One way is to ask the user to add an html element to her site which containns all options as data attributes, which we can then use as query / hash params for our iframe src. We may also use this element as our iframes container, WIN/WIN. I&rsquo;m by no means an experts but feel free to write comments in case you have any questions.</p>
 
 <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src='//d336s8nt4p00c3.cloudfront.net/widget/widget.js';js.async=true;fjs.parentNode.insertBefore(js,fjs);})(document,'script','stylight-wjs');</script>
 
