@@ -4,7 +4,7 @@
   <title><![CDATA[Adventures in code land]]></title>
   <link href="http://dominicphillips.de/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2014-02-17T14:01:38+01:00</updated>
+  <updated>2014-05-19T12:23:00+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -14,6 +14,100 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Rsponsive HTML5 Video Background]]></title>
+    <link href="http://dominicphillips.de/blog/2014/02/25/responsive-html5-video-background/"/>
+    <updated>2014-02-25T13:25:00+01:00</updated>
+    <id>http://dominicphillips.de/blog/2014/02/25/responsive-html5-video-background</id>
+    <content type="html"><![CDATA[<p>Check out the demo / result <a href="http://dominicphillips.de/here">here</a></p>
+
+<p>This is a quick tutorial on how to use HTML5 video as a fancy background like facebook does it <a href="https://www.facebook.com/paper">on their Paper teaser site</a>, including some javascript controls.
+First of all we obviously need a video. Depending on the browsers you want to support, we need different formats. For sake of simplicity I&rsquo;m just going to use mp4. I grabbed a videos from youtube starring <a href="http://www.macmillerofficial.com/">Mac Miller</a> because I enjoy his music, go buy it on itunes.</p>
+
+<p>We&rsquo;re starting off with a fresh html page and add the first video tag to it.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>  <span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;title&gt;</span>HTML5 Video Background Demo<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;video-background&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;video</span> <span class="na">class=</span><span class="s">&quot;video&quot;</span> <span class="na">src=</span><span class="s">&quot;/video/hoodie.mp4&quot;</span><span class="nt">&gt;&lt;/video&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip; some css &hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.video</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span> <span class="cp">!important</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">height</span><span class="o">:</span> <span class="k">auto</span> <span class="cp">!important</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">top</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">left</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">translate</span><span class="p">(</span><span class="m">-50</span><span class="o">%,-</span><span class="m">50</span><span class="o">%</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">translate</span><span class="p">(</span><span class="m">-50</span><span class="o">%,-</span><span class="m">50</span><span class="o">%</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">translate</span><span class="p">(</span><span class="m">-50</span><span class="o">%,-</span><span class="m">50</span><span class="o">%</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">transform</span><span class="o">:</span> <span class="n">translate</span><span class="p">(</span><span class="m">-50</span><span class="o">%,-</span><span class="m">50</span><span class="o">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The video now takes up 100% of the width of the screen, while automatically scaling the height to keep the aspect ratio. In order for these to switch we add an css media query to our css.
+We&rsquo;re also going to use a new css3 property called object-fit: and set it to contain, this ensures&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@media</span> <span class="o">(</span><span class="nt">max-aspect-ratio</span><span class="o">:</span> <span class="nt">16</span><span class="o">/</span><span class="nt">9</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nc">.video</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="k">auto</span> <span class="cp">!important</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span> <span class="cp">!important</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">video</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">object</span><span class="o">-</span><span class="n">fit</span><span class="o">:</span> <span class="n">contain</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Third Party Javascript & Widgets]]></title>
     <link href="http://dominicphillips.de/blog/2014/02/02/writing-third-party-widgets/"/>
     <updated>2014-02-02T13:13:00+01:00</updated>
@@ -21,15 +115,6 @@
     <content type="html"><![CDATA[<p>In this post I want to share some of the experience I picked up from building the <a href="http://www.stylight.co.uk">STYLIGHT</a> looks widget and third party javascript in general. Our widget allows users to embed looks (think of a collection of images, products and videos) into their own websites. Third party js is hard and there are lots of very annoying restrictions, bugs, and security concerns, after all you don&rsquo;t want to break peoples sites.</p>
 
 <p>Third party widgets are all over the web, e.g. google analytics, disqus, all social share buttons and I expected to easily find best practices, ressource and blog posts on how to actually build quality, scalable widgets. But, quite the contrary, the only real helpful information I found was from a book by developers from disqus. I&rsquo;d definetely check it out if you&rsquo;re looking into writing third party js. <a href="http://thirdpartyjs.com/">Get it here</a>.</p>
-
-<p>This is how our widget currently looks like:</p>
-
-<center>
-<a href="http://www.stylight.de/kayture/Looks/Blue-in-shanghai/" class="stylight-look" data-width="640"></a>
-</center>
-
-
-
 
 <div class="info">
   Third-party JavaScript is independent client code executing on a publisher&#8217;s website, but served from a remote web address. It&#8217;s used in the creation of highly distributed web applications, from social widgets, to analytics trackers, to full-featured embedded applications.
@@ -68,7 +153,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>One socket wouldn&rsquo;t make much sense so we create a second one in our embedded iframe for a full fledged messaging system.</p>
+<p>As one socket wouldn&rsquo;t make much sense, we create a second one in our embedded iframe for a full fledged messaging system.</p>
 
 <figure class='code'><figcaption><span>Embedded Iframe</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

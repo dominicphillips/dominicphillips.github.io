@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2014-02-17T14:01:38+01:00</updated>
+  <updated>2014-05-19T12:23:00+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -12,6 +12,139 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rsponsive HTML5 Video Background]]></title>
+    <link href="http://dominicphillips.de/blog/2014/02/25/responsive-html5-video-background/"/>
+    <updated>2014-02-25T13:25:00+01:00</updated>
+    <id>http://dominicphillips.de/blog/2014/02/25/responsive-html5-video-background</id>
+    <content type="html"><![CDATA[<p>Check out the demo / result <a href="/here">here</a></p>
+
+<p>This is a quick tutorial on how to use HTML5 video as a fancy background like facebook does it <a href="https://www.facebook.com/paper">on their Paper teaser site</a>, including some javascript controls.
+First of all we obviously need a video. Depending on the browsers you want to support, we need different formats. For sake of simplicity I&rsquo;m just going to use mp4. I grabbed a videos from youtube starring <a href="http://www.macmillerofficial.com/">Mac Miller</a> because I enjoy his music, go buy it on itunes.</p>
+
+<p>We&rsquo;re starting off with a fresh html page and add the first video tag to it.</p>
+
+<p>``` html</p>
+
+<p>  &lt;!DOCTYPE html>
+  <html>
+  <head></p>
+
+<pre><code>&lt;title&gt;HTML5 Video Background Demo&lt;/title&gt;
+</code></pre>
+
+<p>  </head>
+  <body></p>
+
+<pre><code>&lt;div class="video-background"&gt;
+  &lt;video class="video" src="http://dominicphillips.de/video/hoodie.mp4"&gt;&lt;/video&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>  </body>
+  </html>
+```
+&hellip; some css &hellip;</p>
+
+<p><code>css
+.video {
+  width: 100% !important;
+  height: auto !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+</code>
+The video now takes up 100% of the width of the screen, while automatically scaling the height to keep the aspect ratio. In order for these to switch we add an css media query to our css.
+We&rsquo;re also going to use a new css3 property called object-fit: and set it to contain, this ensures&hellip;</p>
+
+<p>``` css
+@media (max-aspect-ratio: 16/9) {
+  .video {</p>
+
+<pre><code>width: auto !important;
+height: 100% !important;
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>video {
+  object-fit: contain;
+}
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Third Party Javascript & Widgets]]></title>
+    <link href="http://dominicphillips.de/blog/2014/02/02/writing-third-party-widgets/"/>
+    <updated>2014-02-02T13:13:00+01:00</updated>
+    <id>http://dominicphillips.de/blog/2014/02/02/writing-third-party-widgets</id>
+    <content type="html"><![CDATA[<p>In this post I want to share some of the experience I picked up from building the <a href="http://www.stylight.co.uk">STYLIGHT</a> looks widget and third party javascript in general. Our widget allows users to embed looks (think of a collection of images, products and videos) into their own websites. Third party js is hard and there are lots of very annoying restrictions, bugs, and security concerns, after all you don&rsquo;t want to break peoples sites.</p>
+
+<p>Third party widgets are all over the web, e.g. google analytics, disqus, all social share buttons and I expected to easily find best practices, ressource and blog posts on how to actually build quality, scalable widgets. But, quite the contrary, the only real helpful information I found was from a book by developers from disqus. I&rsquo;d definetely check it out if you&rsquo;re looking into writing third party js. <a href="http://thirdpartyjs.com/">Get it here</a>.</p>
+
+<div class="info">
+  Third-party JavaScript is independent client code executing on a publisher's website, but served from a remote web address. It's used in the creation of highly distributed web applications, from social widgets, to analytics trackers, to full-featured embedded applications.
+</div>
+
+
+<p>Our widget is pretty simple but requires a lot of markup and styling, thats why I decided to inject it into the publishers site via an simple iframe, instead of fiddling with the DOM directly. This ensures that my JS and CSS is scoped to my iframe and I won&rsquo;t mess up the publishers site by accident. Another added benefit is that we also avoid the same origin restrictions this way.</p>
+
+<p>&ldquo;Looks&rdquo; have variable heights so we need a way to communicate with the publishers &ldquo;document&rdquo; from within our iframe, to set its height accordingly. There is <a href="https://developer.mozilla.org/en-US/docs/Web/API/window.postMessage">window.postMessage</a> but unfortunately it&rsquo;s not avaiable to all browsers.</p>
+
+<div class="info">
+  The window.postMessage method safely enables cross-origin communication. Normally, scripts on different pages are allowed to access each other if and only if the pages that executed them are at locations with the same protocol (usually both http), port number (80 being the default for http), and host (modulo document.domain being set by both pages to the same value). window.postMessage provides a controlled mechanism to circumvent this restriction in a way which is secure when properly used.
+</div>
+
+
+<p>I found <a href="http://easyxdm.net/">easyXDM</a> to be the perfect library to handle this problem. It uses postMessage and falls back to other methods like flash or FrameElementTransport, its a great little library which is also used by the &ldquo;big boys&rdquo;.</p>
+
+<p>Next follows some pseudo code: First we set up a socket on the hosts site. Notice how the onMessage function uses the incoming &lsquo;message&rsquo; to change the iframes height. EasyXDM will inject an iframe into the specified container using the remote property as its src, which is really neat.</p>
+
+<p>``` coffeescript Host</p>
+
+<p>new easyXDM.Socket</p>
+
+<p>  remote: &ldquo;<a href="http://your_iframe">http://your_iframe</a>&rdquo;</p>
+
+<p>  container: document.getElementById &ldquo;container&rdquo;</p>
+
+<p>  onMessage: (message, origin) &ndash;></p>
+
+<pre><code>this.container.getElementsByTagName("iframe")[0].style.height = message + "px"
+</code></pre>
+
+<p>```</p>
+
+<p>As one socket wouldn&rsquo;t make much sense, we create a second one in our embedded iframe for a full fledged messaging system.</p>
+
+<p>``` coffeescript Embedded Iframe</p>
+
+<p>socket = new easyXDM.Socket</p>
+
+<p>  onReady: &ndash;></p>
+
+<pre><code>socket.postMessage document.body.scrollHeight
+</code></pre>
+
+<p>```</p>
+
+<p>Rendering, analytics calls and added functionality all happen in our own &lsquo;domain&rsquo;, we just briefly touch the publishers DOM.
+How do we make the widget configurable? One way is to ask the user to add an html element to her site which containns all options as data attributes, which we can then use as query / hash params for our iframe src. We may also use this element as our iframes container, WIN/WIN. I&rsquo;m by no means an experts but feel free to write comments in case you have any questions.</p>
+
+<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src='//d336s8nt4p00c3.cloudfront.net/widget/widget.js';js.async=true;fjs.parentNode.insertBefore(js,fjs);})(document,'script','stylight-wjs');</script>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Proxy all links through router in backbone app]]></title>

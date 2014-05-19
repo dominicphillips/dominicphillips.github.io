@@ -4,7 +4,7 @@
   <title><![CDATA[Category: widget | Adventures in code land]]></title>
   <link href="http://dominicphillips.de/blog/categories/widget/atom.xml" rel="self"/>
   <link href="http://dominicphillips.de/"/>
-  <updated>2014-02-17T14:01:38+01:00</updated>
+  <updated>2014-05-19T12:23:00+02:00</updated>
   <id>http://dominicphillips.de/</id>
   <author>
     <name><![CDATA[Dominic Phillips]]></name>
@@ -21,15 +21,6 @@
     <content type="html"><![CDATA[<p>In this post I want to share some of the experience I picked up from building the <a href="http://www.stylight.co.uk">STYLIGHT</a> looks widget and third party javascript in general. Our widget allows users to embed looks (think of a collection of images, products and videos) into their own websites. Third party js is hard and there are lots of very annoying restrictions, bugs, and security concerns, after all you don&rsquo;t want to break peoples sites.</p>
 
 <p>Third party widgets are all over the web, e.g. google analytics, disqus, all social share buttons and I expected to easily find best practices, ressource and blog posts on how to actually build quality, scalable widgets. But, quite the contrary, the only real helpful information I found was from a book by developers from disqus. I&rsquo;d definetely check it out if you&rsquo;re looking into writing third party js. <a href="http://thirdpartyjs.com/">Get it here</a>.</p>
-
-<p>This is how our widget currently looks like:</p>
-
-<center>
-<a href="http://www.stylight.de/kayture/Looks/Blue-in-shanghai/" class="stylight-look" data-width="640"></a>
-</center>
-
-
-
 
 <div class="info">
   Third-party JavaScript is independent client code executing on a publisher's website, but served from a remote web address. It's used in the creation of highly distributed web applications, from social widgets, to analytics trackers, to full-featured embedded applications.
@@ -64,7 +55,7 @@
 
 <p>```</p>
 
-<p>One socket wouldn&rsquo;t make much sense so we create a second one in our embedded iframe for a full fledged messaging system.</p>
+<p>As one socket wouldn&rsquo;t make much sense, we create a second one in our embedded iframe for a full fledged messaging system.</p>
 
 <p>``` coffeescript Embedded Iframe</p>
 
